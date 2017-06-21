@@ -1,0 +1,19 @@
+{
+  "name": "node-graphql-server-express-for-beginner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://wasudev@github.com/wasudev/node-graphql-server-express-for-beginner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wasudev/node-graphql-server-express-for-beginner/issues"
+  },
+  "homepage": "https://github.com/wasudev/node-graphql-server-express-for-beginner#readme"
+}
