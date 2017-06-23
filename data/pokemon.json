@@ -1,0 +1,105 @@
+[
+  {
+    "id": "001",
+    "name": "Bulbasaur",
+    "type": [
+      "grass",
+      "posion"
+    ],
+    "species": "Seed Pokemon",
+    "nameJP": "Fushigidane",
+    "height": 0.71,
+    "weight": 6.9
+  },
+  {
+    "id": "002",
+    "name": "Ivysaur",
+    "type": [
+      "grass",
+      "posion"
+    ],
+    "species": "Seed Pokemon",
+    "nameJP": "Fushigisou",
+    "height": 0.99,
+    "weight": 13.0
+  },
+  {
+    "id": "003",
+    "name": "Venusaur",
+    "type": [
+      "grass",
+      "posion"
+    ],
+    "species": "Seed Pokemon",
+    "nameJP": "Fushigibana",
+    "height": 2.01,
+    "weight": 100.0
+  },
+  {
+    "id": "004",
+    "name": "Charmander",
+    "type": [
+      "fire"
+    ],
+    "species": "Lizard Pokemon",
+    "nameJP": "Hitokage",
+    "height": 0.61,
+    "weight": 8.5
+  },
+  {
+    "id": "005",
+    "name": "Charmeleon",
+    "type": [
+      "fire"
+    ],
+    "species": "Flame Pokemon",
+    "nameJP": "Rizado",
+    "height": 1.09,
+    "weight": 19.0
+  },
+  {
+    "id": "006",
+    "name": "Charizard",
+    "type": [
+      "fire",
+      "flying" 
+    ],
+    "species": "Lizard Pokemon",
+    "nameJP": "Rizadon",
+    "height": 1.70,
+    "weight": 90.5
+  },
+  {
+    "id": "007",
+    "name": "Squirtle",
+    "type": [
+      "Water"
+    ],
+    "species": "Tiny Turtle Pokemon",
+    "nameJP": "Zenigame",
+    "height": 0.51,
+    "weight": 9.0
+  },
+  {
+    "id": "008",
+    "name": "Wartortle",
+    "type": [
+      "Water"
+    ],
+    "species": "Turtle Pokemon",
+    "nameJP": "Kameru",
+    "height": 0.99,
+    "weight": 22.5
+  },
+  {
+    "id": "009",
+    "name": "Blastoise",
+    "type": [
+      "Water"
+    ],
+    "species": "Shellfish Pokemon",
+    "nameJP": "Kamekkusu",
+    "height": 1.60,
+    "weight": 85.5
+  }
+] 
