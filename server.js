@@ -37,11 +37,11 @@ const queryType = new GraphQLObjectType({
       }
     }
   }
-});
+})
 
 const pokemonSchema = new GraphQLSchema({
   query: queryType
-});
+})
 
 var query = `{ 
   pokemon {
@@ -50,8 +50,8 @@ var query = `{
     height,
     weight
   }
-}`;
+}`
 
 graphql(pokemonSchema, query).then(result => {
-  console.log(result.data);
-});
+  console.log(result.data)
+})
