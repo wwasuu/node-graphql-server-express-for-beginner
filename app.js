@@ -6,20 +6,46 @@ import {
   GraphQLList,
   GraphQLFloat,
 } from 'graphql'
+import express from 'express'
+import graphqlHTTP from 'express-graphql'
+import jsonFile from 'jsonfile'
 
-import pokemonData from './data/pokemon.json'
+import pokemonJson from './data/pokemon.json'
 
-const queryPokemon = new GraphQLObjectType({
-  name: "pokemon",
+const pokemonData = pokemonJson
+const pokemonJsonPath = './data/pokemon.json'
+const app = express()
+const PORT = 3001
+
+const pokemonType = new GraphQLObjectType({
+  name: 'pokemonType',
   fields: {
+    id: {
+      type: GraphQLString
+    },
     name: {
       type: GraphQLString,
     },
     nameJP: {
       type: GraphQLString,
     },
+    type: {
+      type: new GraphQLList(GraphQLString),
+    },
+    species: {
+      type: GraphQLString,
+    },
     height: {
       type: GraphQLFloat,
+      args: {
+        unit: {
+          type: GraphQLString
+        }
+      },
+      resolve: ({ height }, { unit }) => {
+        return (unit === 'FEET') ? height * 3.28084 : height
+      }
+      
     },
     weight: {
       type: GraphQLFloat,
@@ -28,11 +54,68 @@ const queryPokemon = new GraphQLObjectType({
 }); 
 
 const queryType = new GraphQLObjectType({
-  name: "queryPokemon",
+  name: 'queryPokemon',
   fields: {
-    pokemon: {
-      type: new GraphQLList(queryPokemon),
+    getPokemon: {
+      type: new GraphQLList(pokemonType),
       resolve() {
+        return pokemonData
+      }
+    },
+    getPokemonById: {
+      type: pokemonType,
+      args: {
+        id: {
+          type: GraphQLString
+        }
+      },
+      resolve: (_, args) => {
+        return pokemonData.filter((pokemon) => pokemon.id === args.id)[0]
+      }
+    }
+  }
+})
+
+const mutationType = new GraphQLObjectType({
+  name: "mutationPokemon",
+  fields: {
+    addPokemon: {
+      type: new GraphQLList(pokemonType),
+      args: {
+        id: {
+          type: GraphQLString
+        },
+        name: {
+          type: GraphQLString
+        },
+        nameJP: {
+          type: GraphQLString
+        },
+        type: {
+          type: new GraphQLList(GraphQLString)
+        },
+        species: {
+          type: GraphQLString
+        },
+        weight: {
+          type: GraphQLFloat
+        },
+        height: {
+          type: GraphQLFloat
+        },
+      },
+      resolve: (_, args) => {
+        const pokemon = {
+          id: args.id,
+          name: args.name,
+          nameJP: args.nameJP,
+          type: args.type,
+          species: args.species,
+          height: args.height,
+          weight: args.weight,
+        }
+        pokemonData.push(pokemon)
+        jsonFile.writeFileSync(pokemonJsonPath, pokemonData)
         return pokemonData
       }
     }
@@ -40,18 +123,14 @@ const queryType = new GraphQLObjectType({
 })
 
 const pokemonSchema = new GraphQLSchema({
-  query: queryType
+  query: queryType,
+  mutation: mutationType
 })
 
-var query = `query { 
-  pokemon {
-    name,
-    nameJP,
-    height,
-    weight
-  }
-}`
+app.use('/graphql', graphqlHTTP({
+  schema: pokemonSchema,
+  graphiql: true
+}));
 
-graphql(pokemonSchema, query).then(result => {
-  console.log(result.data)
-})
+app.listen(PORT);
+console.log("Server running on localhost:", PORT);
