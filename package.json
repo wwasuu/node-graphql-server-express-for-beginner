@@ -17,13 +17,8 @@
   },
   "homepage": "https://github.com/wasudev/node-graphql-server-express-for-beginner#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "express-graphql": "^0.6.6",
-    "graphql": "^0.10.3",
-    "graphql-server-express": "^0.8.5",
-    "graphql-tools": "^1.0.0",
-    "jsonfile": "^3.0.0"
+    "body-parser": "^1.17.2", 
+    "graphql": "^0.10.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
