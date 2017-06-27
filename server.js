@@ -122,13 +122,13 @@ const mutationType = new GraphQLObjectType({
   }
 })
 
-const pokemonSchema = new GraphQLSchema({
+const rootSchema = new GraphQLSchema({
   query: queryType,
   mutation: mutationType
 })
 
 app.use('/graphql', graphqlHTTP({
-  schema: pokemonSchema,
+  schema: rootSchema,
   graphiql: true
 }));
 
