@@ -43,7 +43,7 @@ const pokemonSchema = new GraphQLSchema({
   query: queryType
 })
 
-var query = `{ 
+var query = `query { 
   pokemon {
     name,
     nameJP,
