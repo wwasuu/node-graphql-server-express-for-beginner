@@ -127,10 +127,6 @@ const pokemonSchema = new GraphQLSchema({
   mutation: mutationType
 })
 
-// graphql(pokemonSchema, query).then(result => {
-//   console.log(result.data)
-// })
-
 app.use('/graphql', graphqlHTTP({
   schema: pokemonSchema,
   graphiql: true
