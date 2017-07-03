@@ -12,68 +12,75 @@ import graphqlHTTP from 'express-graphql'
 import jsonFile from 'jsonfile'
 import axios from 'axios'
 
-import pokemonJson from './data/pokemon.json'
-
-const pokemonData = pokemonJson
-const pokemonJsonPath = './data/pokemon.json'
 const app = express()
 const PORT = 3001
 
-const jobLocationType = new GraphQLObjectType({
-  name: 'jobLocationType',
+const pokemonType = new GraphQLObjectType({
+  name: 'pokemonType',
   fields: {
     id: {
-      type: GraphQLString,
+      type: GraphQLString
     },
     name: {
-      type: new GraphQLList(GraphQLString)
-    },
-  },
-})
-
-const jobType = new GraphQLObjectType({
-  name: 'jobType',
-  fields: {
-    id: {
-      type: GraphQLInt
-    },
-    job_title_kw: {
       type: GraphQLString,
     },
-    company_name_kw: {
+    nameJP: {
       type: GraphQLString,
     },
-    job_location: {
-      type: new GraphQLList(jobLocationType)
+    type: {
+      type: new GraphQLList(GraphQLString),
     },
-    salary: {
+    species: {
       type: GraphQLString,
     },
-    urgent_job: {
-      type: GraphQLInt,
+    height: {
+      type: GraphQLFloat,
+      args: {
+        unit: {
+          type: GraphQLString
+        }
+      },
+      resolve: ({ height }, { unit }) => {
+        return (unit === 'FEET') ? height * 3.28084 : height
+      }
+      
+    },
+    weight: {
+      type: GraphQLFloat,
     },
   }
-})
+}); 
 
 const queryType = new GraphQLObjectType({
   name: 'queryPokemon',
   fields: {
-    getJobs: {
-      type: new GraphQLList(jobType),
+    getPokemon: {
+      type: new GraphQLList(pokemonType),
       resolve() {
-        return axios.get('https://dev-service.portfolio.tech/api/v1/jobs?location=all&job_type=all', {})
-        .then(result => result.data.data)
+        return axios.get('http://localhost:3002/pokemon', {})
+        .then(result => result.data)
       }
     },
+    getPokemonById: {
+      type: pokemonType,
+      args: {
+        id: {
+          type: GraphQLString
+        }
+      },
+      resolve: (_, args) => {
+        // return pokemonData.filter((pokemon) => pokemon.id === args.id)[0]
+        return axios.get('http://localhost:3002/pokemon', {})
+        .then(result => {
+          return _.find(result.data, {id: arg.id })
+        })
+      }
+    }
   }
 })
 
-const querySchema = new GraphQLSchema({
-  query: queryType,
-})
-
 app.use('/graphql', graphqlHTTP({
-  schema: querySchema,
+  schema: queryType,
   graphiql: true
 }));
 
