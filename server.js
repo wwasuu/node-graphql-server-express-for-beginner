@@ -11,6 +11,7 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import jsonFile from 'jsonfile'
 import axios from 'axios'
+import _ from 'lodash'
 
 const app = express()
 const PORT = 3001
@@ -68,21 +69,26 @@ const queryType = new GraphQLObjectType({
           type: GraphQLString
         }
       },
-      resolve: (_, args) => {
-        // return pokemonData.filter((pokemon) => pokemon.id === args.id)[0]
+      resolve: (value, args) => {
         return axios.get('http://localhost:3002/pokemon', {})
         .then(result => {
-          return _.find(result.data, {id: arg.id })
+          console.log(result.data)
+          return _.find(result.data, {id: args.id })
         })
       }
     }
   }
 })
 
+const rootSchema = new GraphQLSchema({
+  query: queryType,
+})
+
 app.use('/graphql', graphqlHTTP({
-  schema: queryType,
+  schema: rootSchema,
   graphiql: true
 }));
+
 
 app.listen(PORT);
 console.log("Server running on localhost:", PORT);
