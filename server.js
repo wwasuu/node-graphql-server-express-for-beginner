@@ -5,10 +5,12 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLFloat,
+  GraphQLInt,
 } from 'graphql'
 import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import jsonFile from 'jsonfile'
+import axios from 'axios'
 
 import pokemonJson from './data/pokemon.json'
 
@@ -17,118 +19,61 @@ const pokemonJsonPath = './data/pokemon.json'
 const app = express()
 const PORT = 3001
 
-const pokemonType = new GraphQLObjectType({
-  name: 'pokemonType',
+const jobLocationType = new GraphQLObjectType({
+  name: 'jobLocationType',
   fields: {
     id: {
-      type: GraphQLString
+      type: GraphQLString,
     },
     name: {
+      type: new GraphQLList(GraphQLString)
+    },
+  },
+})
+
+const jobType = new GraphQLObjectType({
+  name: 'jobType',
+  fields: {
+    id: {
+      type: GraphQLInt
+    },
+    job_title_kw: {
       type: GraphQLString,
     },
-    nameJP: {
+    company_name_kw: {
       type: GraphQLString,
     },
-    type: {
-      type: new GraphQLList(GraphQLString),
+    job_location: {
+      type: new GraphQLList(jobLocationType)
     },
-    species: {
+    salary: {
       type: GraphQLString,
     },
-    height: {
-      type: GraphQLFloat,
-      args: {
-        unit: {
-          type: GraphQLString
-        }
-      },
-      resolve: ({ height }, { unit }) => {
-        return (unit === 'FEET') ? height * 3.28084 : height
-      }
-      
-    },
-    weight: {
-      type: GraphQLFloat,
+    urgent_job: {
+      type: GraphQLInt,
     },
   }
-}); 
+})
 
 const queryType = new GraphQLObjectType({
   name: 'queryPokemon',
   fields: {
-    getPokemon: {
-      type: new GraphQLList(pokemonType),
+    getJobs: {
+      type: new GraphQLList(jobType),
       resolve() {
-        return pokemonData
+        return axios.get('https://dev-service.portfolio.tech/api/v1/jobs?location=all&job_type=all', {})
+        .then(result => result.data.data)
       }
     },
-    getPokemonById: {
-      type: pokemonType,
-      args: {
-        id: {
-          type: GraphQLString
-        }
-      },
-      resolve: (_, args) => {
-        return pokemonData.filter((pokemon) => pokemon.id === args.id)[0]
-      }
-    }
   }
 })
 
-const mutationType = new GraphQLObjectType({
-  name: "mutationPokemon",
-  fields: {
-    addPokemon: {
-      type: new GraphQLList(pokemonType),
-      args: {
-        id: {
-          type: GraphQLString
-        },
-        name: {
-          type: GraphQLString
-        },
-        nameJP: {
-          type: GraphQLString
-        },
-        type: {
-          type: new GraphQLList(GraphQLString)
-        },
-        species: {
-          type: GraphQLString
-        },
-        weight: {
-          type: GraphQLFloat
-        },
-        height: {
-          type: GraphQLFloat
-        },
-      },
-      resolve: (_, args) => {
-        const pokemon = {
-          id: args.id,
-          name: args.name,
-          nameJP: args.nameJP,
-          type: args.type,
-          species: args.species,
-          height: args.height,
-          weight: args.weight,
-        }
-        pokemonData.push(pokemon)
-        jsonFile.writeFileSync(pokemonJsonPath, pokemonData)
-        return pokemonData
-      }
-    }
-  }
-})
-
-const rootSchema = new GraphQLSchema({
+const querySchema = new GraphQLSchema({
   query: queryType,
-  mutation: mutationType
 })
 
 app.use('/graphql', graphqlHTTP({
-  schema: rootSchema,
+  schema: querySchema,
   graphiql: true
 }));
 
