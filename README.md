@@ -1,6 +1,6 @@
-# Step 1 :rocket:
+# Step 3 :rocket:
 
 ## Purpose
-Understand behavior of GraphQL. In this step, we create script to running GraphQL.
+Understand behavior of GraphQL. In this step, we connect Jobthai api.
 
 
