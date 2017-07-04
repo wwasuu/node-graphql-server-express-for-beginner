@@ -1,108 +1,259 @@
 {
-  "pokemon": [{
-    "id": "001",
-    "name": "Bulbasaur",
-    "type": ["grass", "posion"],
-    "species": "Seed Pokemon",
-    "nameJP": "Fushigidane",
-    "height": 0.71,
-    "weight": 6.9
-  }, {
-    "id": "002",
-    "name": "Ivysaur",
-    "type": ["grass", "posion"],
-    "species": "Seed Pokemon",
-    "nameJP": "Fushigisou",
-    "height": 0.99,
-    "weight": 13
-  }, {
-    "id": "003",
-    "name": "Venusaur",
-    "type": ["grass", "posion"],
-    "species": "Seed Pokemon",
-    "nameJP": "Fushigibana",
-    "height": 2.01,
-    "weight": 100
-  }, {
-    "id": "004",
-    "name": "Charmander",
-    "type": ["fire"],
-    "species": "Lizard Pokemon",
-    "nameJP": "Hitokage",
-    "height": 0.61,
-    "weight": 8.5
-  }, {
-    "id": "005",
-    "name": "Charmeleon",
-    "type": ["fire"],
-    "species": "Flame Pokemon",
-    "nameJP": "Rizado",
-    "height": 1.09,
-    "weight": 19
-  }, {
-    "id": "006",
-    "name": "Charizard",
-    "type": ["fire", "flying"],
-    "species": "Lizard Pokemon",
-    "nameJP": "Rizadon",
-    "height": 1.7,
-    "weight": 90.5
-  }, {
-    "id": "007",
-    "name": "Squirtle",
-    "type": ["Water"],
-    "species": "Tiny Turtle Pokemon",
-    "nameJP": "Zenigame",
-    "height": 0.51,
-    "weight": 9
-  }, {
-    "id": "008",
-    "name": "Wartortle",
-    "type": ["Water"],
-    "species": "Turtle Pokemon",
-    "nameJP": "Kameru",
-    "height": 0.99,
-    "weight": 22.5
-  }, {
-    "id": "009",
-    "name": "Blastoise",
-    "type": ["Water"],
-    "species": "Shellfish Pokemon",
-    "nameJP": "Kamekkusu",
-    "height": 1.6,
-    "weight": 85.5
-  }, {
-    "id": "010",
-    "name": "Caterpie",
-    "nameJP": "Kyatapi",
-    "type": ["Bug"],
-    "species": "Worm Pokemon",
-    "height": 0.3,
-    "weight": 2.9
-  }, {
-    "id": "011",
-    "name": "Metapod",
-    "nameJP": "Toranseru",
-    "type": ["Bug"],
-    "species": "Cocoon Pokemon",
-    "height": 0.71,
-    "weight": 9.9
-  }, {
-    "id": "012",
-    "name": "Butterfree",
-    "nameJP": "Batafuri",
-    "type": ["Bug", "Flying"],
-    "species": "Butterfly Pokemon",
-    "height": 1.09,
-    "weight": 32
-  }, {
-    "id": "013",
-    "name": "Weedle",
-    "nameJP": "Bidoru",
-    "type": ["Bug", "Poison"],
-    "species": "Hairy Bug Pokemon",
-    "height": 0.3,
-    "weight": 3.2
-  }]
-
+  "pokemon": [
+    {
+      "id": "001",
+      "name": "Bulbasaur",
+      "type": [
+        "grass",
+        "posion"
+      ],
+      "species": "Seed Pokemon",
+      "nameJP": "Fushigidane",
+      "height": 0.71,
+      "weight": 6.9
+    },
+    {
+      "id": "002",
+      "name": "Ivysaur",
+      "type": [
+        "grass",
+        "posion"
+      ],
+      "species": "Seed Pokemon",
+      "nameJP": "Fushigisou",
+      "height": 0.99,
+      "weight": 13
+    },
+    {
+      "id": "003",
+      "name": "Venusaur",
+      "type": [
+        "grass",
+        "posion"
+      ],
+      "species": "Seed Pokemon",
+      "nameJP": "Fushigibana",
+      "height": 2.01,
+      "weight": 100
+    },
+    {
+      "id": "004",
+      "name": "Charmander",
+      "type": [
+        "fire"
+      ],
+      "species": "Lizard Pokemon",
+      "nameJP": "Hitokage",
+      "height": 0.61,
+      "weight": 8.5
+    },
+    {
+      "id": "005",
+      "name": "Charmeleon",
+      "type": [
+        "fire"
+      ],
+      "species": "Flame Pokemon",
+      "nameJP": "Rizado",
+      "height": 1.09,
+      "weight": 19
+    },
+    {
+      "id": "006",
+      "name": "Charizard",
+      "type": [
+        "fire",
+        "flying"
+      ],
+      "species": "Lizard Pokemon",
+      "nameJP": "Rizadon",
+      "height": 1.7,
+      "weight": 90.5
+    },
+    {
+      "id": "007",
+      "name": "Squirtle",
+      "type": [
+        "Water"
+      ],
+      "species": "Tiny Turtle Pokemon",
+      "nameJP": "Zenigame",
+      "height": 0.51,
+      "weight": 9
+    },
+    {
+      "id": "008",
+      "name": "Wartortle",
+      "type": [
+        "Water"
+      ],
+      "species": "Turtle Pokemon",
+      "nameJP": "Kameru",
+      "height": 0.99,
+      "weight": 22.5
+    },
+    {
+      "id": "009",
+      "name": "Blastoise",
+      "type": [
+        "Water"
+      ],
+      "species": "Shellfish Pokemon",
+      "nameJP": "Kamekkusu",
+      "height": 1.6,
+      "weight": 85.5
+    },
+    {
+      "id": "010",
+      "name": "Caterpie",
+      "nameJP": "Kyatapi",
+      "type": [
+        "Bug"
+      ],
+      "species": "Worm Pokemon",
+      "height": 0.3,
+      "weight": 2.9
+    },
+    {
+      "id": "011",
+      "name": "Metapod",
+      "nameJP": "Toranseru",
+      "type": [
+        "Bug"
+      ],
+      "species": "Cocoon Pokemon",
+      "height": 0.71,
+      "weight": 9.9
+    },
+    {
+      "id": "012",
+      "name": "Butterfree",
+      "nameJP": "Batafuri",
+      "type": [
+        "Bug",
+        "Flying"
+      ],
+      "species": "Butterfly Pokemon",
+      "height": 1.09,
+      "weight": 32
+    },
+    {
+      "id": "013",
+      "name": "Weedle",
+      "nameJP": "Bidoru",
+      "type": [
+        "Bug",
+        "Poison"
+      ],
+      "species": "Hairy Bug Pokemon",
+      "height": 0.3,
+      "weight": 3.2
+    },
+    {
+      "id": "014",
+      "name": "Kakuna",
+      "nameJP": "Kokun",
+      "type": [
+        "Bug",
+        "Poison"
+      ],
+      "species": "Cocoon Pokemon",
+      "weight": 10.2,
+      "height": 0.61
+    },
+    {
+      "id": "015",
+      "name": "Beedrill",
+      "nameJP": "Supia",
+      "type": [
+        "Bug",
+        "Poison"
+      ],
+      "species": "Poison Bee Pokemon",
+      "weight": 29.5,
+      "height": 0.99
+    },
+    {
+      "id": "016",
+      "name": "Pidgey",
+      "nameJP": "Poppo",
+      "type": [
+        "Normal",
+        "Flying"
+      ],
+      "species": "Tiny Bird Pokemon",
+      "weight": 1.8,
+      "height": 0.3
+    },
+    {
+      "id": "017",
+      "name": "Pidgeotto",
+      "nameJP": "Pijon",
+      "type": [
+        "Normal",
+        "Flying"
+      ],
+      "species": "Bird Pokemon",
+      "weight": 30,
+      "height": 1.09
+    },
+    {
+      "id": "018",
+      "name": "Pidgeot",
+      "nameJP": "Pijotto",
+      "type": [
+        "Normal",
+        "Flying"
+      ],
+      "species": "Bird Pokemon",
+      "weight": 39.5,
+      "height": 1.5
+    },
+    {
+      "id": "019",
+      "name": "Rattata",
+      "nameJP": "Koratta",
+      "type": [
+        "Normal"
+      ],
+      "species": "Mouse Pokemon",
+      "weight": 3.5,
+      "height": 0.3
+    },
+    {
+      "id": "020",
+      "name": "Raticate",
+      "nameJP": "Ratta",
+      "type": [
+        "Normal"
+      ],
+      "species": "Mouse Pokemon",
+      "weight": 18.5,
+      "height": 0.71
+    },
+    {
+      "id": "021",
+      "name": "Spearow",
+      "nameJP": "Onisuzume",
+      "type": [
+        "Normal",
+        "Flying"
+      ],
+      "species": "Tiny Bird Pokemon",
+      "weight": 2,
+      "height": 0.3
+    },
+    {
+      "id": "022",
+      "name": "Fearow",
+      "nameJP": "Onidoriru",
+      "type": [
+        "Normal",
+        "Flying"
+      ],
+      "species": "Beak Pokemon",
+      "weight": 38,
+      "height": 1.19
+    }
+  ]
 }

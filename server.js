@@ -6,6 +6,7 @@ import {
   GraphQLList,
   GraphQLFloat,
   GraphQLInt,
+  GraphQLNonNull,
 } from 'graphql'
 import express from 'express'
 import graphqlHTTP from 'express-graphql'
@@ -69,11 +70,94 @@ const queryType = new GraphQLObjectType({
           type: GraphQLString
         }
       },
-      resolve: (value, args) => {
+      resolve: (root, args) => {
         return axios.get('http://localhost:3002/pokemon', {})
         .then(result => {
-          console.log(result.data)
           return _.find(result.data, {id: args.id })
+        })
+      }
+    }
+  }
+})
+
+const mutationType = new GraphQLObjectType({
+  name: "mutationPokemon",
+  fields: {
+    addPokemon: {
+      type: pokemonType,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        name: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        nameJP: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        type: {
+          type: new GraphQLList(GraphQLString)
+        },
+        species: {
+          type: GraphQLString
+        },
+        weight: {
+          type: GraphQLFloat
+        },
+        height: {
+          type: GraphQLFloat
+        },
+      },
+      resolve: (root, args) => {
+        return axios.post('http://localhost:3002/pokemon', args)
+        .then(result => {
+          return result.data
+        })
+      }
+    },
+    editPokemon: {
+      type: pokemonType,
+        args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        name: {
+          type: GraphQLString
+        },
+        nameJP: {
+          type: GraphQLString
+        },
+        type: {
+          type: GraphQLString
+        },
+        species: {
+          type: GraphQLString
+        },
+        weight: {
+          type: GraphQLFloat
+        },
+        height: {
+          type: GraphQLFloat
+        },
+      },
+      resolve: (root, args) => {
+        return axios.patch(`http://localhost:3002/pokemon/${args.id}`, args)
+        .then(result => {
+          return result.data
+        })
+      }
+    },
+    deletePokemon: {
+      type: pokemonType,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+      },
+      resolve: (root, args) => {
+        return axios.delete(`http://localhost:3002/pokemon/${args.id}`, {})
+        .then(result => {
+          return result.data
         })
       }
     }
@@ -82,6 +166,7 @@ const queryType = new GraphQLObjectType({
 
 const rootSchema = new GraphQLSchema({
   query: queryType,
+  mutation: mutationType
 })
 
 app.use('/graphql', graphqlHTTP({
