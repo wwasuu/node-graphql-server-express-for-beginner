@@ -70,7 +70,7 @@ const queryType = new GraphQLObjectType({
           type: GraphQLString
         }
       },
-      resolve: (root, args) => {
+      resolve: (parentValue, args) => {
         return axios.get('http://localhost:3002/pokemon', {})
         .then(result => {
           return _.find(result.data, {id: args.id })
@@ -108,7 +108,7 @@ const mutationType = new GraphQLObjectType({
           type: GraphQLFloat
         },
       },
-      resolve: (root, args) => {
+      resolve: (parentValue, args) => {
         return axios.post('http://localhost:3002/pokemon', args)
         .then(result => {
           return result.data
@@ -140,7 +140,7 @@ const mutationType = new GraphQLObjectType({
           type: GraphQLFloat
         },
       },
-      resolve: (root, args) => {
+      resolve: (parentValue, args) => {
         return axios.patch(`http://localhost:3002/pokemon/${args.id}`, args)
         .then(result => {
           return result.data
@@ -154,7 +154,7 @@ const mutationType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString)
         },
       },
-      resolve: (root, args) => {
+      resolve: (parentValue, args) => {
         return axios.delete(`http://localhost:3002/pokemon/${args.id}`, {})
         .then(result => {
           return result.data
