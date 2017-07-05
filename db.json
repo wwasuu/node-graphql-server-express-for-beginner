@@ -10,7 +10,8 @@
       "species": "Seed Pokemon",
       "nameJP": "Fushigidane",
       "height": 0.71,
-      "weight": 6.9
+      "weight": 6.9,
+      "generationId": 1
     },
     {
       "id": "002",
@@ -22,7 +23,8 @@
       "species": "Seed Pokemon",
       "nameJP": "Fushigisou",
       "height": 0.99,
-      "weight": 13
+      "weight": 13,
+      "generationId": 1
     },
     {
       "id": "003",
@@ -34,7 +36,8 @@
       "species": "Seed Pokemon",
       "nameJP": "Fushigibana",
       "height": 2.01,
-      "weight": 100
+      "weight": 100,
+      "generationId": 1
     },
     {
       "id": "004",
@@ -45,7 +48,8 @@
       "species": "Lizard Pokemon",
       "nameJP": "Hitokage",
       "height": 0.61,
-      "weight": 8.5
+      "weight": 8.5,
+      "generationId": 1
     },
     {
       "id": "005",
@@ -56,7 +60,8 @@
       "species": "Flame Pokemon",
       "nameJP": "Rizado",
       "height": 1.09,
-      "weight": 19
+      "weight": 19,
+      "generationId": 1
     },
     {
       "id": "006",
@@ -68,7 +73,8 @@
       "species": "Lizard Pokemon",
       "nameJP": "Rizadon",
       "height": 1.7,
-      "weight": 90.5
+      "weight": 90.5,
+      "generationId": 1
     },
     {
       "id": "007",
@@ -79,7 +85,8 @@
       "species": "Tiny Turtle Pokemon",
       "nameJP": "Zenigame",
       "height": 0.51,
-      "weight": 9
+      "weight": 9,
+      "generationId": 1
     },
     {
       "id": "008",
@@ -90,7 +97,8 @@
       "species": "Turtle Pokemon",
       "nameJP": "Kameru",
       "height": 0.99,
-      "weight": 22.5
+      "weight": 22.5,
+      "generationId": 1
     },
     {
       "id": "009",
@@ -101,7 +109,8 @@
       "species": "Shellfish Pokemon",
       "nameJP": "Kamekkusu",
       "height": 1.6,
-      "weight": 85.5
+      "weight": 85.5,
+      "generationId": 1
     },
     {
       "id": "010",
@@ -112,7 +121,8 @@
       ],
       "species": "Worm Pokemon",
       "height": 0.3,
-      "weight": 2.9
+      "weight": 2.9,
+      "generationId": 1
     },
     {
       "id": "011",
@@ -123,7 +133,8 @@
       ],
       "species": "Cocoon Pokemon",
       "height": 0.71,
-      "weight": 9.9
+      "weight": 9.9,
+      "generationId": 1
     },
     {
       "id": "012",
@@ -135,7 +146,8 @@
       ],
       "species": "Butterfly Pokemon",
       "height": 1.09,
-      "weight": 32
+      "weight": 32,
+      "generationId": 1
     },
     {
       "id": "013",
@@ -147,7 +159,8 @@
       ],
       "species": "Hairy Bug Pokemon",
       "height": 0.3,
-      "weight": 3.2
+      "weight": 3.2,
+      "generationId": 1
     },
     {
       "id": "014",
@@ -159,7 +172,8 @@
       ],
       "species": "Cocoon Pokemon",
       "weight": 10.2,
-      "height": 0.61
+      "height": 0.61,
+      "generationId": 1
     },
     {
       "id": "015",
@@ -171,7 +185,8 @@
       ],
       "species": "Poison Bee Pokemon",
       "weight": 29.5,
-      "height": 0.99
+      "height": 0.99,
+      "generationId": 1
     },
     {
       "id": "016",
@@ -183,7 +198,8 @@
       ],
       "species": "Tiny Bird Pokemon",
       "weight": 1.8,
-      "height": 0.3
+      "height": 0.3,
+      "generationId": 1
     },
     {
       "id": "017",
@@ -195,7 +211,8 @@
       ],
       "species": "Bird Pokemon",
       "weight": 30,
-      "height": 1.09
+      "height": 1.09,
+      "generationId": 1
     },
     {
       "id": "018",
@@ -207,7 +224,8 @@
       ],
       "species": "Bird Pokemon",
       "weight": 39.5,
-      "height": 1.5
+      "height": 1.5,
+      "generationId": 1
     },
     {
       "id": "019",
@@ -218,7 +236,8 @@
       ],
       "species": "Mouse Pokemon",
       "weight": 3.5,
-      "height": 0.3
+      "height": 0.3,
+      "generationId": 1
     },
     {
       "id": "020",
@@ -229,7 +248,8 @@
       ],
       "species": "Mouse Pokemon",
       "weight": 18.5,
-      "height": 0.71
+      "height": 0.71,
+      "generationId": 1
     },
     {
       "id": "021",
@@ -241,7 +261,8 @@
       ],
       "species": "Tiny Bird Pokemon",
       "weight": 2,
-      "height": 0.3
+      "height": 0.3,
+      "generationId": 1
     },
     {
       "id": "022",
@@ -253,7 +274,31 @@
       ],
       "species": "Beak Pokemon",
       "weight": 38,
-      "height": 1.19
+      "height": 1.19,
+      "generationId": 1
+    }
+  ],
+  "generation": [
+    {
+      "id": 1,
+      "game": [
+        "Red",
+        "Green",
+        "Blue",
+        "Yellow"
+      ],
+      "numberOfPokemon": 151,
+      "region": "Kanto"
+    },
+    {
+      "id": 2,
+      "game": [
+        "Gold",
+        "Silver",
+        "Crystal"
+      ],
+      "numberOfPokemon": 100,
+      "region": "Johto"
     }
   ]
 }
