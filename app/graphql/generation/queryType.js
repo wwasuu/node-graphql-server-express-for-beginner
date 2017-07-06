@@ -1,6 +1,7 @@
 import {
   GraphQLObjectType,
   GraphQLList,
+  GraphQLInt,
 } from 'graphql'
 import axios from 'axios'
 
@@ -11,8 +12,22 @@ const queryType = new GraphQLObjectType({
   fields: {
     getGeneration: {
       type: new GraphQLList(geneationType),
-      resolve(parentValue, args) {
+      resolve: (parentValue, args) => {
         return axios.get(`http://localhost:3002/generation`, {})
+        .then(result => {
+          return result.data
+        })
+      }
+    },
+    getGenerationById: {
+      type: geneationType,
+      args: {
+        id: {
+          type: GraphQLInt
+        }
+      },
+      resolve: (parentValue, args) => {
+        return axios.get(`http://localhost:3002/generation/${args.id}`, {})
         .then(result => {
           return result.data
         })
