@@ -10,11 +10,11 @@ import {
 import _ from 'lodash'
 
 import { queryPokemonType, mutationPokemonType } from './pokemon'
-import { queryGenerationType } from './generation'
+import { queryGenerationType, mutationGenerationType } from './generation'
 
 const schema = new GraphQLSchema({
   query: _.merge(queryPokemonType, queryGenerationType),
-  mutation: mutationPokemonType
+  mutation: _.merge(mutationPokemonType, mutationGenerationType)
 })
 
 export default schema

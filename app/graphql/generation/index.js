@@ -1,7 +1,9 @@
-import queryGenerationType  from './queryType'
 import generationType from './inputType'
+import queryGenerationType  from './queryType'
+import mutationGenerationType from './mutationType'
 
 export {
   generationType,
-  queryGenerationType
+  queryGenerationType,
+  mutationGenerationType
 }

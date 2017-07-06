@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js --exec babel-node -e js",
-    "start-json-server": "json-server --watch db.json --port 3002"
+    "json-server": "json-server --watch db.json --port 3002"
   },
   "repository": {
     "type": "git",
