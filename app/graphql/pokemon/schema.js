@@ -10,6 +10,7 @@ const typeDefs = `
     height: Float
     weight: Float
     generationId: Int!
+    generation: Generation
   }
 `
 
@@ -21,6 +22,12 @@ const resolvers = {
   Query: {
     getPokemon(root, args, context) {
       return axios.get('http://localhost:3002/pokemon', {})
+      .then(result => result.data)
+    }
+  },
+  Pokemon: {
+    generation: (root) => {
+      return axios.get(`http://localhost:3002/generation/${root.generationId}`, {})
       .then(result => result.data)
     }
   }
