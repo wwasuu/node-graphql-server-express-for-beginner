@@ -4,12 +4,14 @@ import _ from 'lodash'
 import { 
   typeDefs as pokemonTypeDefs,
   query as pokemonQuery,
+  mutation as pokemonMutation,
   resolvers as pokemonResolvers
 } from './pokemon/schema'
 
 import {
   typeDefs as generationTypeDefs,
   query as generationQuery,
+  mutation as generationMutation,
   resolvers as generationResolvers
 } from './generation/schema'
 
@@ -23,6 +25,11 @@ const moduleQueries = [
   generationQuery
 ]
 
+const moduleMutations = [
+  pokemonMutation,
+  generationMutation
+]
+
 const typeDefs = `
   ${moduleTypeDefs.join('\n')}
 
@@ -31,9 +38,15 @@ const typeDefs = `
     ${moduleQueries.join('\n')}
   }
 
+  # Root Mutation
+  type Mutation {
+    ${moduleMutations.join('\n')}
+  }
+
   # GraphQL Schema
   schema {
     query: Query
+    mutation: Mutation
   }
 `
 
