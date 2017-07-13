@@ -27,6 +27,9 @@ const mutation = `
     numberOfPokemon: Int
     region: String
   ): Generation
+  deleteGeneration (
+    id: Int!
+  ): Generation
 `
 
 const resolvers = {
@@ -45,6 +48,10 @@ const resolvers = {
       return axios.patch(`http://localhost:3002/generation/${args.id}`, args)
       .then(result => result.data)
     },
+    deleteGeneration: (root, args, context) => {
+      return axios.delete(`http://localhost:3002/generation/${args.id}`, {})
+      .then(result => result.data)
+    }
   },
   Generation: {
     pokemon: (root) => {

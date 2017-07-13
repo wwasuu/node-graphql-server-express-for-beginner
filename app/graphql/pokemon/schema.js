@@ -39,6 +39,9 @@ const mutation = `
     weight: Float
     generationId: Int
   ): Pokemon
+  deletePokemon(
+    id: String!
+  ): Pokemon
 `
 
 const resolvers = {
@@ -55,6 +58,10 @@ const resolvers = {
     },
     editPokemon: (root, args, context) => {
       return axios.patch(`http://localhost:3002/pokemon/${args.id}`, args)
+      .then(result => result.data)
+    },
+    deletePokemon: (root, args, context) => {
+      return axios.delete(`http://localhost:3002/pokemon/${args.id}`, {})
       .then(result => result.data)
     },
   },
