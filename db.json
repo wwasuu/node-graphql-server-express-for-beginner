@@ -4,8 +4,8 @@
       "id": "001",
       "name": "Bulbasaur",
       "type": [
-        "grass",
-        "posion"
+        "Grass",
+        "Posion"
       ],
       "species": "Seed Pokemon",
       "nameJP": "Fushigidane",
@@ -17,8 +17,8 @@
       "id": "002",
       "name": "Ivysaur",
       "type": [
-        "grass",
-        "posion"
+        "Grass",
+        "Posion"
       ],
       "species": "Seed Pokemon",
       "nameJP": "Fushigisou",
@@ -30,8 +30,8 @@
       "id": "003",
       "name": "Venusaur",
       "type": [
-        "grass",
-        "posion"
+        "Grass",
+        "Posion"
       ],
       "species": "Seed Pokemon",
       "nameJP": "Fushigibana",
@@ -43,7 +43,7 @@
       "id": "004",
       "name": "Charmander",
       "type": [
-        "fire"
+        "Fire"
       ],
       "species": "Lizard Pokemon",
       "nameJP": "Hitokage",
@@ -55,7 +55,7 @@
       "id": "005",
       "name": "Charmeleon",
       "type": [
-        "fire"
+        "Fire"
       ],
       "species": "Flame Pokemon",
       "nameJP": "Rizado",
@@ -67,8 +67,8 @@
       "id": "006",
       "name": "Charizard",
       "type": [
-        "fire",
-        "flying"
+        "Fire",
+        "Flying"
       ],
       "species": "Lizard Pokemon",
       "nameJP": "Rizadon",
