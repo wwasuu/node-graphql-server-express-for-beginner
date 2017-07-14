@@ -13,7 +13,7 @@ const typeDefs = `
     generation: Generation
   }
 
-  type PokemonListPayload {
+  type PokemonsPayload {
     meta: Meta,
     data: [Pokemon],
     errors: [Error]
@@ -38,7 +38,7 @@ const typeDefs = `
 `
 
 const query = `
-  getPokemon: PokemonListPayload
+  getPokemon: PokemonsPayload
   getPokemonById(id: String!): PokemonPayload
 `
 

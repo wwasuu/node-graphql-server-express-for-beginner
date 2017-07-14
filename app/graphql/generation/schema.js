@@ -9,7 +9,7 @@ const typeDefs = `
     pokemon: [Pokemon]
   }
 
-  type GenerationListPayload {
+  type GenerationsPayload {
     meta: Meta,
     data: [Generation],
     errors: [Error]
@@ -24,7 +24,7 @@ const typeDefs = `
 `
 
 const query = `
-  getGeneration: GenerationListPayload
+  getGeneration: GenerationsPayload
 `
 
 const mutation = `
