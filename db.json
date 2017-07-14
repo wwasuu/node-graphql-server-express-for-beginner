@@ -336,6 +336,42 @@
       "height": 0.61,
       "weight": 12,
       "generationId": 1
+    },
+    {
+      "id": "028",
+      "name": "Sandslash",
+      "nameJP": "Sandopan",
+      "type": [
+        "Ground"
+      ],
+      "species": "Mouse Pokemon",
+      "height": 0.99,
+      "weight": 29.5,
+      "generationId": 1
+    },
+    {
+      "id": "029",
+      "name": "Nidoran",
+      "nameJP": "Nidoran",
+      "type": [
+        "Poison"
+      ],
+      "species": "Poison Pin Pokemon",
+      "height": 0.41,
+      "weight": 7,
+      "generationId": 1
+    },
+    {
+      "id": "030",
+      "name": "Nidorina",
+      "nameJP": "Nidorina",
+      "type": [
+        "Poison"
+      ],
+      "species": "Poison Pin Pokemon",
+      "height": 0.79,
+      "weight": 20,
+      "generationId": 1
     }
   ],
   "generation": [

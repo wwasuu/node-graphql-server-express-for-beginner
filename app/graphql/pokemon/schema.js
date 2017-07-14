@@ -12,14 +12,20 @@ const typeDefs = `
     generationId: Int!
     generation: Generation
   }
-`
 
-const query = `
-  getPokemon: [Pokemon]
-`
+  type PokemonListPayload {
+    meta: Meta,
+    data: [Pokemon],
+    errors: [Error]
+  }
 
-const mutation = `
-  addPokemon(
+  type PokemonPayload {
+    meta: Meta,
+    data: Pokemon,
+    errors: [Error]
+  }
+
+  input PokemonInput {
     id: String!
     name: String!
     nameJP: String!
@@ -28,41 +34,64 @@ const mutation = `
     height: Float
     weight: Float
     generationId: Int!
-  ): Pokemon
-  editPokemon(
-    id: String!
-    name: String
-    nameJP: String
-    type: [String]
-    species: String
-    height: Float
-    weight: Float
-    generationId: Int
-  ): Pokemon
+  }
+`
+
+const query = `
+  getPokemon: PokemonListPayload
+  getPokemonById(id: String!): PokemonPayload
+`
+
+const mutation = `
+  addPokemon(input: PokemonInput): Pokemon
+  editPokemon(input: PokemonInput): Pokemon
   deletePokemon(
     id: String!
-  ): Pokemon
+  ): Meta
 `
 
 const resolvers = {
   Query: {
     getPokemon: (root, args, context) => {
       return axios.get('http://localhost:3002/pokemon', {})
-      .then(result => result.data)
-    }
+      .then(result => {
+        return {
+          meta: {
+            status: 200,
+          },
+          data: result.data,
+          errors: []
+        }
+      })
+    },
+    getPokemonById: (root, args, context) => {
+      return axios.get(`http://localhost:3002/pokemon/${args.id}`, {})
+      .then(result => {
+        return {
+          meta: {
+            status: 200,
+          },
+          data: result.data,
+          errors: []
+        }
+      })
+    },
   },
   Mutation: {
     addPokemon: (root, args, context) => {
-      return axios.post('http://localhost:3002/pokemon', args)
+      return axios.post('http://localhost:3002/pokemon', args.input)
       .then(result => result.data)
     },
     editPokemon: (root, args, context) => {
-      return axios.patch(`http://localhost:3002/pokemon/${args.id}`, args)
+      return axios.patch(`http://localhost:3002/pokemon/${args.input.id}`, args.input)
       .then(result => result.data)
     },
     deletePokemon: (root, args, context) => {
       return axios.delete(`http://localhost:3002/pokemon/${args.id}`, {})
-      .then(result => result.data)
+      .then(result => ({
+        status: 200,
+        message: 'success'
+      }))
     },
   },
   Pokemon: {

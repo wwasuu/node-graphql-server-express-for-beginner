@@ -7,17 +7,20 @@ import {
   mutation as pokemonMutation,
   resolvers as pokemonResolvers
 } from './pokemon/schema'
-
 import {
   typeDefs as generationTypeDefs,
   query as generationQuery,
   mutation as generationMutation,
   resolvers as generationResolvers
 } from './generation/schema'
+import metaTypeDefs from './meta'
+import errorTypeDefs from './error'
 
 const moduleTypeDefs = [
+  metaTypeDefs,
   pokemonTypeDefs,
-  generationTypeDefs 
+  generationTypeDefs ,
+  errorTypeDefs
 ]
 
 const moduleQueries = [
@@ -51,7 +54,7 @@ const typeDefs = `
 `
 
 const executableSchema = makeExecutableSchema({
-  typeDefs,
+  typeDefs: typeDefs,
   resolvers: _.merge(pokemonResolvers, generationResolvers),
 })
 
