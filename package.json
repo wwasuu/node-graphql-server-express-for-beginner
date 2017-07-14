@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm-run-all --parallel server json-server",
     "server": "nodemon server.js --exec babel-node -e js",
     "json-server": "json-server --watch db.json --port 3002"
   },
@@ -26,7 +27,8 @@
     "graphql": "^0.10.3",
     "graphql-server-express": "^1.0.0",
     "graphql-tools": "^1.0.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "npm-run-all": "^4.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

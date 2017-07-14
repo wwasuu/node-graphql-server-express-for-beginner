@@ -8,25 +8,28 @@ const typeDefs = `
     region: String
     pokemon: [Pokemon]
   }
+
+  type GenerationListPayload {
+    meta: Meta,
+    data: [Generation],
+    errors: [Error]
+  }
+
+  input GeneationInput {
+    id: Int!
+    game: [String]
+    numberOfPokemon: Int
+    region: String
+  }
 `
 
 const query = `
-  getGeneration: [Generation]
+  getGeneration: GenerationListPayload
 `
 
 const mutation = `
-  addGeneration (
-    id: Int!
-    game: [String]
-    numberOfPokemon: Int
-    region: String
-  ): Generation
-  editGeneration (
-    id: Int!
-    game: [String]
-    numberOfPokemon: Int
-    region: String
-  ): Generation
+  addGeneration (input: GeneationInput): Generation
+  editGeneration (input: GeneationInput): Generation
   deleteGeneration (
     id: Int!
   ): Generation
@@ -36,7 +39,15 @@ const resolvers = {
   Query: {
     getGeneration: (root, args, context) => {
       return axios.get('http://localhost:3002/generation', {})
-      .then(result => result.data)
+      .then(result => {
+        return {
+          meta: {
+            status: 200,
+          },
+          data: result.data,
+          errors: []
+        }
+      })
     }
   },
   Mutation: {
@@ -45,7 +56,7 @@ const resolvers = {
       .then(result => result.data)
     },
     editGeneration: (root, args, context) => {
-      return axios.patch(`http://localhost:3002/generation/${args.id}`, args)
+      return axios.patch(`http://localhost:3002/generation/${args.input.id}`, args.input)
       .then(result => result.data)
     },
     deleteGeneration: (root, args, context) => {
