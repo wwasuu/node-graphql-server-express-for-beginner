@@ -15,6 +15,12 @@ const typeDefs = `
     errors: [Error]
   }
 
+  type GenerationPayload {
+    meta: Meta,
+    data: Generation,
+    errors: [Error]
+  }
+
   input GeneationInput {
     id: Int!
     game: [String]
@@ -25,6 +31,7 @@ const typeDefs = `
 
 const query = `
   getGeneration: GenerationsPayload
+  getGenerationById: GenerationPayload
 `
 
 const mutation = `
@@ -39,6 +46,18 @@ const resolvers = {
   Query: {
     getGeneration: (root, args, context) => {
       return axios.get('http://localhost:3002/generation', {})
+      .then(result => {
+        return {
+          meta: {
+            status: 200,
+          },
+          data: result.data,
+          errors: []
+        }
+      })
+    },
+    getGenerationById: (root, args, context) => {
+      return axios.get(`http://localhost:3002/generation/${args.id}`, {})
       .then(result => {
         return {
           meta: {
