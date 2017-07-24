@@ -483,6 +483,172 @@
       "height": 0.51,
       "weight": 5.5,
       "generationId": 1
+    },
+    {
+      "id": "040",
+      "name": "Wigglytuff",
+      "nameJP": "Pukurin",
+      "type": [
+        "Normal",
+        "Fairy"
+      ],
+      "species": "Ballon Pokemon",
+      "height": 0.99,
+      "weight": 12,
+      "generationId": 1
+    },
+    {
+      "id": "041",
+      "name": "Zubat",
+      "nameJP": "Zubatto",
+      "type": [
+        "Poison",
+        "Flying"
+      ],
+      "species": "Bat Pokemon",
+      "height": 0.79,
+      "weight": 7.5,
+      "generationId": 1
+    },
+    {
+      "id": "042",
+      "name": "Golbat",
+      "nameJP": "Gorubatto",
+      "type": [
+        "Poison",
+        "Flying"
+      ],
+      "species": "Bat Pokemon",
+      "height": 1.6,
+      "weight": 55,
+      "generationId": 1
+    },
+    {
+      "id": "043",
+      "name": "Oddish",
+      "nameJP": "Nazonokusa",
+      "type": [
+        "Grass",
+        "Poison"
+      ],
+      "species": "Weed Pokemon",
+      "height": 0.51,
+      "weight": 5.4,
+      "generationId": 1
+    },
+    {
+      "id": "044",
+      "name": "Gloom",
+      "nameJP": "Kusaihana",
+      "type": [
+        "Grass",
+        "Poison"
+      ],
+      "species": "Weed",
+      "height": 0.79,
+      "weight": 8.6,
+      "generationId": 1
+    },
+    {
+      "id": "045",
+      "name": "Vileplume",
+      "nameJP": "Rafureshia",
+      "type": [
+        "Grass",
+        "Poison"
+      ],
+      "species": "Flower Pokemon",
+      "height": 1.19,
+      "weight": 18.6,
+      "generationId": 1
+    },
+    {
+      "id": "046",
+      "name": "Paras",
+      "nameJP": "Parasu",
+      "type": [
+        "Bug",
+        "Grass"
+      ],
+      "species": "Mushroom Pokemon",
+      "height": 0.3,
+      "weight": 5.4,
+      "generationId": 1
+    },
+    {
+      "id": "047",
+      "name": "Parasect",
+      "nameJP": "Parasekuto",
+      "type": [
+        "Bug",
+        "Grass"
+      ],
+      "species": "Mushroom Pokemon",
+      "height": 0.99,
+      "weight": 29.5,
+      "generationId": 1
+    },
+    {
+      "id": "048",
+      "name": "Venonat",
+      "nameJP": "Konpan",
+      "type": [
+        "Bug",
+        "Poison"
+      ],
+      "species": "Insect Pokemon",
+      "height": 0.99,
+      "weight": 30,
+      "generationId": 1
+    },
+    {
+      "id": "049",
+      "name": "Venomoth",
+      "nameJP": "Morufon",
+      "type": [
+        "Bug",
+        "Poison"
+      ],
+      "species": "Poison Moth Pokemon",
+      "height": 1.5,
+      "weight": 12.5,
+      "generationId": 1
+    },
+    {
+      "id": "050",
+      "name": "Diglett",
+      "nameJP": "Diguda",
+      "type": [
+        "Ground"
+      ],
+      "species": "Mole Pokemon",
+      "height": 0.2,
+      "weight": 0.8,
+      "generationId": 1
+    },
+    {
+      "id": "051",
+      "name": "Dugtrio",
+      "nameJP": "Dagutorio",
+      "type": [
+        "Ground"
+      ],
+      "species": "Mole Pokemon",
+      "height": 0.71,
+      "weight": 33.3,
+      "generationId": 1
+    },
+    {
+      "id": "052",
+      "name": "Meowth",
+      "nameJP": "Nyasu",
+      "type": [
+        "Normal"
+      ],
+      "species": "Scratch Cat Pokemon",
+      "height": 0.41,
+      "weight": 4.2,
+      "generationId": 1
     }
   ],
   "generation": [
