@@ -5,6 +5,7 @@ import {
   typeDefs as pokemonTypeDefs,
   query as pokemonQuery,
   mutation as pokemonMutation,
+  subscription as pokemonSubscription,
   resolvers as pokemonResolvers
 } from './pokemon/schema'
 import {
@@ -33,6 +34,10 @@ const moduleMutations = [
   generationMutation
 ]
 
+const moduleSubscriptions = [
+  pokemonSubscription
+]
+
 const typeDefs = `
   ${moduleTypeDefs.join('\n')}
 
@@ -46,10 +51,16 @@ const typeDefs = `
     ${moduleMutations.join('\n')}
   }
 
+  # Root Subscription
+  type Subscription {
+    ${moduleSubscriptions.join('\n')}
+  }
+
   # GraphQL Schema
   schema {
     query: Query
     mutation: Mutation
+    subscription: Subscription
   }
 `
 

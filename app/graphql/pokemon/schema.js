@@ -1,4 +1,13 @@
 import axios from 'axios'
+import { PubSub, withFilter } from 'graphql-subscriptions'
+
+import { getGenerationByIdLoader } from '../../dataloader'
+import {
+  getPokemon,
+  getPokemonById
+} from '../../services/pokemonService'
+
+const pubsub = new PubSub();
 
 const typeDefs = `
   type Pokemon {
@@ -50,10 +59,14 @@ const mutation = `
   ): Meta
 `
 
+const subscription = `
+  pokemonCreated: Pokemon
+`
+
 const resolvers = {
   Query: {
     getPokemon: (root, args, context) => {
-      return axios.get('http://localhost:3002/pokemon', {})
+      return getPokemon() 
       .then(result => {
         return {
           meta: {
@@ -65,7 +78,7 @@ const resolvers = {
       })
     },
     getPokemonById: (root, args, context) => {
-      return axios.get(`http://localhost:3002/pokemon/${args.id}`, {})
+      return getPokemonById(args.id)
       .then(result => {
         return {
           meta: {
@@ -80,7 +93,10 @@ const resolvers = {
   Mutation: {
     addPokemon: (root, args, context) => {
       return axios.post('http://localhost:3002/pokemon', args.input)
-      .then(result => result.data)
+      .then(result => {
+        pubsub.publish('pokemonCreated', { pokemonCreated: result.data });
+        return result.data
+      })
     },
     editPokemon: (root, args, context) => {
       return axios.patch(`http://localhost:3002/pokemon/${args.input.id}`, args.input)
@@ -94,6 +110,11 @@ const resolvers = {
       }))
     },
   },
+  Subscription: {
+    pokemonCreated: {
+      subscribe: () => pubsub.asyncIterator('pokemonCreated')
+    }
+  },
   Pokemon: {
     generation: (root) => {
       return axios.get(`http://localhost:3002/generation/${root.generationId}`, {})
@@ -106,5 +127,6 @@ export  {
   typeDefs,
   query,
   mutation,
+  subscription,
   resolvers
 }

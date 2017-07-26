@@ -649,6 +649,151 @@
       "height": 0.41,
       "weight": 4.2,
       "generationId": 1
+    },
+    {
+      "id": "053",
+      "name": "Persian",
+      "nameJP": "Perushian",
+      "type": [
+        "Normal"
+      ],
+      "species": "Classy Cat Pokemon",
+      "height": 0.99,
+      "weight": 32,
+      "generationId": 1
+    },
+    {
+      "id": "054",
+      "name": "Psyduck",
+      "nameJP": "Kodakku",
+      "type": [
+        "Water"
+      ],
+      "species": "Duck Pokemon",
+      "height": 0.79,
+      "weight": 19.6,
+      "generationId": 1
+    },
+    {
+      "id": "055",
+      "name": "Golduck",
+      "nameJP": "Gorudakku",
+      "type": [
+        "Water"
+      ],
+      "species": "Duck Pokemon",
+      "height": 1.7,
+      "weight": 76.6,
+      "generationId": 1
+    },
+    {
+      "id": "056",
+      "name": "Mankey",
+      "nameJP": "Manki",
+      "type": [
+        "Fighting"
+      ],
+      "species": "Pig Monkey Pokemon",
+      "height": 0.51,
+      "weight": 28,
+      "generationId": 1
+    },
+    {
+      "id": "057",
+      "name": "Primeape",
+      "nameJP": "Okorizaru",
+      "type": [
+        "Fighting"
+      ],
+      "species": "Pig Monkey Pokemon",
+      "height": 0.99,
+      "weight": 32,
+      "generationId": 1
+    },
+    {
+      "id": "058",
+      "name": "Growlithe",
+      "nameJP": "Gadi",
+      "type": [
+        "Fire"
+      ],
+      "species": "Puppy Pokemon",
+      "height": 0.71,
+      "weight": 19,
+      "generationId": 1
+    },
+    {
+      "id": "059",
+      "name": "Arcanine",
+      "nameJP": "Uindi",
+      "type": [
+        "Fire"
+      ],
+      "species": "Legendary Pokemon",
+      "height": 1.91,
+      "weight": 155,
+      "generationId": 1
+    },
+    {
+      "id": "060",
+      "name": "Poliwag",
+      "nameJP": "Nyoromo",
+      "type": [
+        "Water"
+      ],
+      "species": "Tadpole Pokemon",
+      "height": 0.61,
+      "weight": 12.4,
+      "generationId": 1
+    },
+    {
+      "id": "061",
+      "name": "Poliwhirl",
+      "nameJP": "Nyorozo",
+      "type": [
+        "Water"
+      ],
+      "species": "Tadpole Pokemon",
+      "height": 0.99,
+      "weight": 20,
+      "generationId": 1
+    },
+    {
+      "id": "062",
+      "name": "Poliwrath",
+      "nameJP": "Nyorobon",
+      "type": [
+        "Water",
+        "Fighting"
+      ],
+      "species": "Tadpole Pokemon",
+      "height": 1.3,
+      "weight": 54,
+      "generationId": 1
+    },
+    {
+      "id": "063",
+      "name": "Abra",
+      "nameJP": "Kesyi",
+      "type": [
+        "Psychic"
+      ],
+      "species": "Psi Pokemon",
+      "height": 0.89,
+      "weight": 19.5,
+      "generationId": 1
+    },
+    {
+      "id": "064",
+      "name": "Kadabra",
+      "nameJP": "Yungera",
+      "type": [
+        "Psychic"
+      ],
+      "species": "Psi Pokemon",
+      "height": 1.3,
+      "weight": 56.5,
+      "generationId": 1
     }
   ],
   "generation": [
