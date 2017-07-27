@@ -65,7 +65,7 @@ const typeDefs = `
 `
 
 const executableSchema = makeExecutableSchema({
-  typeDefs: typeDefs,
+  typeDefs,
   resolvers: _.merge(pokemonResolvers, generationResolvers),
 })
 
