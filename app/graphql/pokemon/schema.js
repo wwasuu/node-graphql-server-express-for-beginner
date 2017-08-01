@@ -1,13 +1,19 @@
 import axios from 'axios'
-import { PubSub, withFilter } from 'graphql-subscriptions'
+import {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt
+} from 'graphql'
+import { PubSub } from 'graphql-subscriptions'
 
 import { getGenerationByIdLoader } from '../../dataloader'
 import {
   getPokemon,
-  getPokemonById
+  getPokemonById,
+  addPokemon
 } from '../../services/pokemonService'
 
-const pubsub = new PubSub();
+const pubSub = new PubSub()
 
 const typeDefs = `
   type Pokemon {
@@ -92,11 +98,11 @@ const resolvers = {
   },
   Mutation: {
     addPokemon: (root, args, context) => {
-      return axios.post('http://localhost:3002/pokemon', args.input)
-      .then(result => {
-        pubsub.publish('pokemonCreated', { pokemonCreated: result.data });
-        return result.data
-      })
+      return addPokemon(args.input)
+        .then(result => {
+          pubSub.publish('pokemonCreated', { pokemonCreated: result.data })
+          return result.data
+        })
     },
     editPokemon: (root, args, context) => {
       return axios.patch(`http://localhost:3002/pokemon/${args.input.id}`, args.input)
@@ -112,7 +118,7 @@ const resolvers = {
   },
   Subscription: {
     pokemonCreated: {
-      subscribe: () => pubsub.asyncIterator('pokemonCreated')
+      subscribe: () => pubSub.asyncIterator('pokemonCreated')
     }
   },
   Pokemon: {

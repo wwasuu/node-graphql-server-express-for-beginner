@@ -794,6 +794,18 @@
       "height": 1.3,
       "weight": 56.5,
       "generationId": 1
+    },
+    {
+      "id": "065",
+      "name": "Alakazam",
+      "nameJP": "Fudin",
+      "type": [
+        "Pyschic"
+      ],
+      "species": "Psi Pokemon",
+      "height": 1.5,
+      "weight": 48,
+      "generationId": 1
     }
   ],
   "generation": [

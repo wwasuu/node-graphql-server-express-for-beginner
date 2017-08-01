@@ -29,7 +29,7 @@ app.use('/graphiql', graphiqlExpress({
 
 // Wrap the Express server
 const ws = createServer(app)
-ws.listen(PORT, () => {
+const server = ws.listen(PORT, () => {
   // Set up the WebSocket for handling GraphQL subscriptions
   new SubscriptionServer({
     execute,
@@ -41,3 +41,5 @@ ws.listen(PORT, () => {
   })
   console.log(`GraphQL Server is now running on http://localhost:${PORT}`);
 })
+
+export default server
