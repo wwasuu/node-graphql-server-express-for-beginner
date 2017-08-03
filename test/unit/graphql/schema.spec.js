@@ -129,7 +129,11 @@ describe('Pokemon', () => {
           const args = {
             input: pokemonData
           }
-          const expected = pokemonData
+          const expected = {
+            meta: { status: 201},
+            data: pokemonData,
+            errors: []
+          }
           const apiPokemonServiceData = { status: 201, data: pokemonData };
           const resPokemonService = Promise.resolve(apiPokemonServiceData);
           mockPokemonService.expects('addPokemon').once().withArgs(args.input).returns(resPokemonService)

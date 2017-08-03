@@ -12,7 +12,6 @@ import {
   GraphQLList,
   GraphQLNonNull
 } from 'graphql'
-import { PubSub } from 'graphql-subscriptions'
 import { execute, subscribe } from 'graphql'
 import { createServer } from 'http'
 import { SubscriptionServer } from 'subscriptions-transport-ws'
@@ -35,7 +34,7 @@ describe('Pokemon', () => {
   afterEach(() => {
     mockAxios.restore()
   })
-  it.only('Should return status 200 and correctly payload', () => {
+  it('Should return status 200 and correctly payload', () => {
     const query = {
       query: `
           query {
@@ -113,6 +112,122 @@ describe('Pokemon', () => {
         mockAxios.verify()
         expect(res.statusCode).to.equals(200)
         expect(res.body.data.getPokemon).to.deep.equals(expected)
+      })
+  })
+
+  it.only('Should return status 200, correctly payload and emit event', () => {
+    const query = {
+      query: `
+        mutation { 
+          addPokemon (
+            input: {
+              id: "066"
+              name: "Machop"
+              nameJP: "Wanriki"
+              species:"Superpower Pokemon"
+              type: ["Fighting"]
+              height: 0.79
+              weight: 19.5
+              generationId: 1
+            }
+          ) {
+            meta {
+              status
+            }
+            data {
+              id
+              name
+              nameJP
+            }
+            errors {
+              code
+              message
+            }
+          }
+        }
+      `,
+      variables: null,
+      operationName:""
+    }
+
+    const pokemonInput = {
+      id: "066",
+      name: "Machop",
+      nameJP: "Wanriki",
+      species:"Superpower Pokemon",
+      type: ["Fighting"],
+      height: 0.79,
+      weight: 19.5,
+      generationId: 1,
+    }
+  
+    const expected = {
+      addPokemon: {
+        meta: {
+          status: 201
+        },
+        data: {
+          id: "066",
+          name: "Machop",
+          nameJP: "Wanriki"
+        },
+        errors: []
+      }
+    }
+    const apiPokemonServiceRes = { status: 201, data: pokemonInput}
+    const resPokemonService = Promise.resolve(apiPokemonServiceRes)
+    mockAxios.expects('post').once().withArgs('http://localhost:3002/pokemon', pokemonInput).returns(resPokemonService)
+    return request.post('/graphql')
+      .set('Accept', 'application/json')
+      .send(query)
+      .then(res => {
+        mockAxios.verify()        
+        expect(res.statusCode).to.equals(200)
+        expect(res.body.data).to.deep.equals(expected)
+      })
+  })
+
+  it('Should return status 400 and errors message when query invalid field', () => {
+    const query = {
+      query: `
+        query {
+          getPokemon {
+            meta {
+              status
+            }
+            data {
+              id
+              nameTH
+              generation {
+                region
+              }
+            }
+            errors {
+              code
+            }
+          }
+        }
+      `,
+      variables: null,
+      operationName: ""
+    }
+    const expected = [
+      {
+        "message": "Cannot query field \"nameTH\" on type \"Pokemon\". Did you mean \"name\" or \"nameJP\"?",
+        "locations": [
+          {
+              "line": 9,
+              "column": 15
+          }
+        ]
+      }
+    ]
+    return request.post('/graphql')
+      .set('Accept', 'application/json')
+      .send(query)
+      .then(res => {
+        expect(res.statusCode).to.equals(400)
+        expect(res.body.errors).to.deep.equals(expected)
       })
   })
 }) 

@@ -58,7 +58,7 @@ const query = `
 `
 
 const mutation = `
-  addPokemon(input: PokemonInput): Pokemon
+  addPokemon(input: PokemonInput): PokemonPayload
   editPokemon(input: PokemonInput): Pokemon
   deletePokemon(
     id: String!
@@ -101,7 +101,27 @@ const resolvers = {
       return addPokemon(args.input)
         .then(result => {
           pubSub.publish('pokemonCreated', { pokemonCreated: result.data })
-          return result.data
+          return {
+            meta: {
+              status: result.status,
+            },
+            data: result.data,
+            errors: []
+          }
+        })
+        .catch(err => {
+          return {
+            meta: {
+              status: 500,
+            },
+            data: null,
+            errors: [
+              {
+                code: 500,
+                message: 'Internal server error'
+              }
+            ]
+          }
         })
     },
     editPokemon: (root, args, context) => {
