@@ -69,7 +69,7 @@ describe('Pokemon', () => {
         afterEach(() => {
           mockPokemonService.restore()
         })
-        it('Should return status 200 and data when pass correctly argument', (done) => {
+        it('Should return status 200 and data when pass correct argument', (done) => {
           const args = { id: '1' }
           const pokemonData = [
             {
@@ -120,7 +120,7 @@ describe('Pokemon', () => {
           mockPokemonService.restore()
           mockPubSub.restore()
         })
-        it('Should return status 200 and data when created with correctly argument', (done) => {
+        it('Should return status 200 and data when created with correct argument', (done) => {
           const pokemonData = {
             id: '150',
             name: 'Mewtwo',
@@ -161,7 +161,7 @@ describe('Pokemon', () => {
         afterEach(() => {
           mockPubSub.restore()
         })
-        it('Should call asyncIterator function with argument corretly', (done) => {
+        it('Should call asyncIterator function with correct argument', (done) => {
           mockPubSub.expects('asyncIterator').once().withArgs('pokemonCreated')
           promised(rootSchema._typeMap.Subscription.getFields().pokemonCreated.subscribe())
             .then(() => {

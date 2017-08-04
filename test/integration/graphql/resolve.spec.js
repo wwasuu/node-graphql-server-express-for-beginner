@@ -34,7 +34,7 @@ describe('Pokemon', () => {
   afterEach(() => {
     mockAxios.restore()
   })
-  it('Should return status 200 and correctly payload', () => {
+  it('Should return status 200 and correct payload', () => {
     const query = {
       query: `
           query {
@@ -115,7 +115,7 @@ describe('Pokemon', () => {
       })
   })
 
-  it.only('Should return status 200, correctly payload and emit event', () => {
+  it.only('Should return status 200, correct payload and emit event', () => {
     const query = {
       query: `
         mutation { 
