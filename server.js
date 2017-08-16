@@ -24,9 +24,6 @@ app.use('/graphiql', graphiqlExpress({
   subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions`
 }))
 
-// const server = app.listen(PORT);
-// console.log("Server running on localhost:", PORT)
-
 // Wrap the Express server
 const ws = createServer(app)
 const server = ws.listen(PORT, () => {

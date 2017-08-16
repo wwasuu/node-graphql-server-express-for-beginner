@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { PubSub } from 'graphql-subscriptions'
 
-import { getGenerationByIdLoader } from '../../dataloader'
 import {
   getPokemon,
   getPokemonById,
