@@ -1,9 +1,4 @@
 import axios from 'axios'
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt
-} from 'graphql'
 import { PubSub } from 'graphql-subscriptions'
 
 import { getGenerationByIdLoader } from '../../dataloader'
