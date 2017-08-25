@@ -76,6 +76,18 @@ const resolvers = {
           errors: []
         }
       })
+      .catch(err => {
+        return {
+          meta: {
+            status: err.response.status,
+          },
+          data: null,
+          errors: [{
+            code: err.response.status,
+            message: err.response.statusText,
+          }]
+        }
+      })
     },
     getPokemonById: (root, args, context) => {
       return getPokemonById(args.id)

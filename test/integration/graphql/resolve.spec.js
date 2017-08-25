@@ -115,7 +115,7 @@ describe('Pokemon', () => {
       })
   })
 
-  it.only('Should return status 200, correct payload and emit event', () => {
+  it('Should return status 200, correct payload and emit event', () => {
     const query = {
       query: `
         mutation { 
@@ -186,6 +186,8 @@ describe('Pokemon', () => {
         expect(res.body.data).to.deep.equals(expected)
       })
   })
+
+  it('Should return status 200, correct errors payload and correct meta payload')
 
   it('Should return status 400 and errors message when query invalid field', () => {
     const query = {
