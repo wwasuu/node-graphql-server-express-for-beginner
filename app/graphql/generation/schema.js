@@ -1,4 +1,5 @@
 import axios from 'axios'
+import * as generationService  from '../../services/generationService'
 
 const typeDefs = `
   type Generation {
@@ -45,7 +46,7 @@ const mutation = `
 const resolvers = {
   Query: {
     getGeneration: (root, args, context) => {
-      return axios.get('http://localhost:3002/generation', {})
+      return generationService.getGeneration()
       .then(result => {
         return {
           meta: {
@@ -57,7 +58,7 @@ const resolvers = {
       })
     },
     getGenerationById: (root, args, context) => {
-      return axios.get(`http://localhost:3002/generation/${args.id}`, {})
+      return generationService.getGenerationById(args.id)
       .then(result => {
         return {
           meta: {

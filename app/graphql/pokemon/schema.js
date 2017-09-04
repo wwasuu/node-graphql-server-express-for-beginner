@@ -1,11 +1,7 @@
 import axios from 'axios'
 import { PubSub } from 'graphql-subscriptions'
 
-import {
-  getPokemon,
-  getPokemonById,
-  addPokemon
-} from '../../services/pokemonService'
+import * as pokemonService from '../../services/pokemonService'
 
 const pubSub = new PubSub()
 
@@ -66,7 +62,7 @@ const subscription = `
 const resolvers = {
   Query: {
     getPokemon: (root, args, context) => {
-      return getPokemon() 
+      return pokemonService.getPokemon() 
       .then(result => {
         return {
           meta: {
@@ -90,7 +86,7 @@ const resolvers = {
       })
     },
     getPokemonById: (root, args, context) => {
-      return getPokemonById(args.id)
+      return pokemonService.getPokemonById(args.id)
       .then(result => {
         return {
           meta: {
@@ -104,7 +100,7 @@ const resolvers = {
   },
   Mutation: {
     addPokemon: (root, args, context) => {
-      return addPokemon(args.input)
+      return pokemonService.addPokemon(args.input)
         .then(result => {
           pubSub.publish('pokemonCreated', { pokemonCreated: result.data })
           return {
